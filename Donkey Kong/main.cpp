@@ -2,7 +2,7 @@
 
 int main() {
 	GameManager game;
-	game.gameInit();
+	game.game_init();
 
 	return 0;
 }
