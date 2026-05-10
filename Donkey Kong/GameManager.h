@@ -1,15 +1,17 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <iostream>
+//#include <iostream>
+#include "Mario.h"
 
 class GameManager {
 private:
 	bool m_is_running;
+	Mario m_mario;
 	sf::RenderWindow m_window;
 
-	void handle_events();
 	void draw();
 	void update(float dt);
+	void handle_events();
 	void handle_keyboard();
 public:
 	GameManager();

@@ -1,7 +1,7 @@
 #include "GameManager.h"
 
 GameManager::GameManager()
-	: m_window(sf::VideoMode(sf::Vector2u(800,600)),"Donkey Kong", sf::Style::Default,sf::State::Windowed), m_is_running(false) {}
+	: m_window(sf::VideoMode::getDesktopMode(), "Donkey Kong", sf::Style::Default, sf::State::Fullscreen), m_is_running(false) {}
 
 void GameManager::game_init() {
 	m_is_running = true;
@@ -30,7 +30,16 @@ void GameManager::handle_events() {
 
 void GameManager::draw() {
 	m_window.clear();
-	// draw here
+	m_mario.draw(m_window);
+
+	/*
+	sf::RectangleShape rect;
+	rect.setFillColor(sf::Color::Red);
+	rect.setSize({ 50, 50 });
+	rect.setPosition({ 100, 100 });
+	m_window.draw(rect);
+	*/
+
 	m_window.display();
 }
 
