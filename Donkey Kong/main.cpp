@@ -1,8 +1,8 @@
-#include <SFML/Graphics.hpp>
+#include "GameManager.h"
 
-int main()
-{
-
+int main() {
+	GameManager game;
+	game.gameInit();
 
 	return 0;
 }
