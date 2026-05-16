@@ -1,7 +1,7 @@
 #include "GameManager.h"
 
 GameManager::GameManager()
-	: m_window(sf::VideoMode::getDesktopMode(), "Donkey Kong", sf::Style::Default, sf::State::Fullscreen), m_is_running(false) {}
+	: m_window(sf::VideoMode::getDesktopMode(), "Donkey Kong", sf::Style::Default, sf::State::Windowed), m_is_running(false) {}
 
 void GameManager::game_init() {
 	m_is_running = true;
@@ -11,8 +11,6 @@ void GameManager::game_init() {
 
 	while (m_is_running && m_window.isOpen()) {
 		float dt = clock.restart().asSeconds();
-		//float fps = 1.f / dt;
-		//std::cout << fps << '\n';
 
 		handle_keyboard();
 		handle_events();
@@ -44,11 +42,17 @@ void GameManager::draw() {
 }
 
 void GameManager::update(float dt) {
-
+	m_mario.update(dt);
 }
 
 void GameManager::handle_keyboard() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Escape)) {
 		m_is_running = false;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Left)) {
+		m_mario.setDirection(Direction::LEFT);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Right)) {
+		m_mario.setDirection(Direction::RIGHT);
 	}
 }
