@@ -18,20 +18,23 @@ void Mario::setDirection(Direction dir) {
 }
 
 void Mario::move(float dt) {
-	int temp_x;
-	int curr_y;
+	m_velocity.x = 0.f;
+	m_velocity.y = 0.f;
+
+	float speed = 200.f;
+
 	switch (m_direction) {
 	case Direction::LEFT:
-		temp_x = m_square.getPosition().x - 200 * dt;
-		curr_y = m_square.getPosition().y;
-		m_square.setPosition(sf::Vector2f(temp_x, curr_y));
+		m_velocity.x = -speed;
 		break;
 	case Direction::RIGHT:
-		temp_x = m_square.getPosition().x + 200 * dt;
-		curr_y = m_square.getPosition().y;
-		m_square.setPosition(sf::Vector2f(temp_x, curr_y));
+		m_velocity.x = speed;
 		break;
+	case Direction::NONE:
 	default:
+		m_velocity.x = 0;
 		break;
 	}
+
+	m_square.setPosition(m_square.getPosition() + m_velocity * dt);
 }

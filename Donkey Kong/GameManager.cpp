@@ -29,15 +29,6 @@ void GameManager::handle_events() {
 void GameManager::draw() {
 	m_window.clear();
 	m_mario.draw(m_window);
-
-	/*
-	sf::RectangleShape rect;
-	rect.setFillColor(sf::Color::Red);
-	rect.setSize({ 50, 50 });
-	rect.setPosition({ 100, 100 });
-	m_window.draw(rect);
-	*/
-
 	m_window.display();
 }
 
@@ -54,5 +45,9 @@ void GameManager::handle_keyboard() {
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Right)) {
 		m_mario.setDirection(Direction::RIGHT);
+	}
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Right) && 
+		!sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Left)) {
+		m_mario.setDirection(Direction::NONE);
 	}
 }
