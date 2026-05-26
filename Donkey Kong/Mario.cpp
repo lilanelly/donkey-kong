@@ -1,12 +1,13 @@
 #include "Mario.h"
 
-Mario::Mario()
-	:m_square({100, 100}) {
-	m_square.setFillColor(sf::Color::Red);
+Mario::Mario(sf::Texture& texture)
+: m_sprite(texture)
+{
+	m_sprite.setScale(sf::Vector2f(3.f, 3.f)); //temp
 }
 
 void Mario::draw(sf::RenderWindow& window) const {
-	window.draw(m_square);
+	window.draw(m_sprite);
 }
 
 void Mario::update(float dt) {
@@ -36,5 +37,5 @@ void Mario::move(float dt) {
 		break;
 	}
 
-	m_square.setPosition(m_square.getPosition() + m_velocity * dt);
+	m_sprite.setPosition(m_sprite.getPosition() + m_velocity * dt);
 }

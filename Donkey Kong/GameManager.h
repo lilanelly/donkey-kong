@@ -1,13 +1,16 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-//#include <iostream>
+#include <memory>
+
+#include "AssetManager.h"
 #include "Mario.h"
 
 class GameManager {
 private:
 	bool m_is_running;
-	Mario m_mario;
+	std::unique_ptr<Mario> m_mario;
 	sf::RenderWindow m_window;
+	AssetManager m_asset_manager;
 
 	void draw();
 	void update(float dt);

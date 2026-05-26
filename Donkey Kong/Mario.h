@@ -9,11 +9,11 @@ enum class Direction {
 
 class Mario {
 private:
-	sf::RectangleShape m_square;
+	sf::Sprite m_sprite;
 	sf::Vector2f m_velocity;
 	Direction m_direction;
 public:
-	Mario();
+	Mario(sf::Texture& texture);
 
 	void draw(sf::RenderWindow& window) const;
 	void update(float dt);
